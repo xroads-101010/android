@@ -1,0 +1,187 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/regiActHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:text="@string/registerAct_header_user_details"
+            android:textSize="32sp" />
+
+        <RelativeLayout
+            android:id="@+id/regiActFirstRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/regiActHeaderTextView"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/regiActMobileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:text="@string/registerAct_mobile"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActMobileEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/regiActMobileText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="phone"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/regiActSecondRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/regiActFirstRow"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/regiActEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:text="@string/registerAct_email"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActEmailEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/regiActEmailText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="textEmailAddress"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/regiActThirdRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/regiActSecondRow"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/regiActNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:text="@string/registerAct_name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActNameEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/regiActNameText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/regiActForthRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/regiActThirdRow"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/regiActPasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:text="@string/registerAct_password"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActPasswordEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/regiActPasswordText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/regiActFifthRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/regiActForthRow"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/regiActConfirmPasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginRight="10dp"
+                android:text="@string/registerAct_confirm_password"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActConfirmPasswordEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/regiActConfirmPasswordText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/regiActRegisterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regiActFifthRow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/gradient_button"
+            android:text="@string/registerAct_register_me"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
+</ScrollView>

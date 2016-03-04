@@ -1,0 +1,67 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.OtpActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/optActHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/otpAct_otp_message"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:id="@+id/otpActFirstRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/optActHeaderTextView"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/otpActNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/otpAct_otp"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regiActMobileEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/otpActNameText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="text"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/otpActOtpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otpActFirstRow"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/gradient_button"
+            android:text="@string/otpAct_next"
+            android:textAlignment="center" />
+    </RelativeLayout>
+</ScrollView>

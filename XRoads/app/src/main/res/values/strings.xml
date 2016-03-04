@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XRoads</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="registerAct_header_user_details">User Details</string>
+    <string name="registerAct_mobile">Mobile*</string>
+    <string name="registerAct_email">Email Id</string>
+    <string name="registerAct_name">Name</string>
+    <string name="registerAct_password">Password*</string>
+    <string name="registerAct_confirm_password">Confirm Password*</string>
+    <string name="registerAct_register_me">Register Me!</string>
+    <string name="otpAct_otp_message">Please enter the OTP sent to your mobile/email</string>
+    <string name="otpAct_otp">OTP</string>
+    <string name="otpAct_next">Next</string>
+    <string name="loginAct_password">Password</string>
+    <string name="loginAct_mobile">Mobile</string>
+    <string name="loginAct_Login">Login</string>
+    <string name="register_link">New to XRoads? Register here</string>
+
+    <color name="gray">#D8D8D8</color>
+    <color name="lavender">#9F81F7</color>
+
+    <string name="title_activity_otp">OtpActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_tracking_maps">Map</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

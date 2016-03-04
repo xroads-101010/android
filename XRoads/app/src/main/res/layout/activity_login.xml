@@ -1,0 +1,96 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/loginActFirstRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/loginActMobileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginRight="10dp"
+                android:text="@string/loginAct_mobile"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/loginActMobileEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/loginActMobileText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="phone"
+                android:textColor="@android:color/black"
+                android:textColorHint="#81F781" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loginActSecondRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginActFirstRow"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg">
+
+            <TextView
+                android:id="@+id/loginActPasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginRight="10dp"
+                android:text="@string/loginAct_password"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/loginActPasswordEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/loginActPasswordText"
+                android:background="@drawable/gradient_bg1"
+                android:ems="10"
+                android:gravity="left"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black"
+                android:textColorHint="#81F781" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/loginActLoginButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginActSecondRow"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/gradient_button"
+            android:text="@string/loginAct_Login"
+            android:textAlignment="center" />
+
+        <TextView android:id="@+id/loginActLinkToRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginActLoginButton"
+            android:layout_marginTop="40dip"
+            android:layout_marginBottom="10dip"
+            android:text="@string/register_link"
+            android:gravity="center"
+            android:textSize="20dip"/>
+    </RelativeLayout>
+</ScrollView>
