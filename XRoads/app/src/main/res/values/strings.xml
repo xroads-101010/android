@@ -11,6 +11,7 @@
     <string name="registerAct_password">Password*</string>
     <string name="registerAct_confirm_password">Confirm Password*</string>
     <string name="registerAct_register_me">Register Me!</string>
+    <string name="login_link">Already a member? Login here</string>
     <string name="otpAct_otp_message">Please enter the OTP sent to your mobile/email</string>
     <string name="otpAct_otp">OTP</string>
     <string name="otpAct_next">Next</string>

@@ -2,6 +2,7 @@ package com.li.xroads.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.li.xroads.R;
@@ -30,50 +32,50 @@ import java.net.HttpURLConnection;
 
 public class RegisterActivity extends Activity implements View.OnClickListener {
 
-    ActionBar actionBar;
     Button registerButton;
     EditText emailEdit;
     EditText mobileEdit;
     EditText nameEdit;
     EditText passwordEdit;
-
+    TextView loginScreenLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        if(!NetworkConnectionUtility.isInternetConnected(this)){
+
+        if (!NetworkConnectionUtility.isInternetConnected(this)) {
             Toast.makeText(this, "Internet is not connected, please check connection", Toast.LENGTH_LONG).show();
             return;
         }
+        loginScreenLink = (TextView) findViewById(R.id.regiActLinkToLogin);
+        loginScreenLink.setOnClickListener(this);
         registerView();
     }
 
     private void registerView() {
         registerButton = (Button) findViewById(R.id.regiActRegisterButton);
-        emailEdit = (EditText)findViewById(R.id.regiActEmailEdit);
+        emailEdit = (EditText) findViewById(R.id.regiActEmailEdit);
         emailEdit.addTextChangedListener(new TextValidator(emailEdit) {
             @Override
             public void validate(EditText textView, String text) {
                 Validation.isEmailAddress(textView, false);
             }
         });
-        mobileEdit = (EditText)findViewById(R.id.regiActMobileEdit);
+        mobileEdit = (EditText) findViewById(R.id.regiActMobileEdit);
         mobileEdit.addTextChangedListener(new TextValidator(mobileEdit) {
             @Override
             public void validate(EditText textView, String text) {
                 Validation.isPhoneNumber(textView, true);
             }
         });
-        nameEdit  = (EditText) findViewById(R.id.regiActNameEdit);
+        nameEdit = (EditText) findViewById(R.id.regiActNameEdit);
         nameEdit.addTextChangedListener(new TextValidator(nameEdit) {
             @Override
             public void validate(EditText textView, String text) {
                 Validation.hasText(textView);
             }
         });
-        passwordEdit = (EditText)findViewById(R.id.regiActPasswordEdit);
+        passwordEdit = (EditText) findViewById(R.id.regiActPasswordEdit);
         passwordEdit.addTextChangedListener(new TextValidator(passwordEdit) {
             @Override
             public void validate(EditText textView, String text) {
@@ -110,23 +112,27 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.regiActRegisterButton:
-                if ( checkValidation () ) {
+                if (checkValidation()) {
                     registerUser();
-
-                }else {
+                } else {
                     Toast.makeText(RegisterActivity.this, "Form contains error", Toast.LENGTH_LONG).show();
                 }
+                break;
+            case R.id.regiActLinkToLogin:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 break;
         }
     }
 
-    private void startIntent(HTTPResponse result){
+    private void startIntent(HTTPResponse result) {
         if (result.getStatus() == HttpURLConnection.HTTP_OK || result.getStatus() == HttpURLConnection.HTTP_CREATED) {
             Intent intent = intent = new Intent(this, OtpActivity.class);
             startActivity(intent);
         }
-        Toast.makeText(this, result.getResponse(), Toast.LENGTH_LONG ).show();
+        Toast.makeText(this, result.getResponse(), Toast.LENGTH_LONG).show();
     }
+
     private boolean checkValidation() {
         boolean ret = true;
 
@@ -150,15 +156,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
 
     public class RegisterUserAsync extends AsyncTask<User, Void, HTTPResponse> {
-
+        private ProgressDialog pDialog;
         private static final String TAG = "RegisterUserAsync";
+
         @Override
         protected HTTPResponse doInBackground(User... params) {
             JSONObject userJson = new JSONObject();
             try {
 
                 Log.e(TAG, "In doInBackground");
-                User user  = params[0];
+                User user = params[0];
                 userJson.put(Constant.EMAIL_KEY, user.getEmail());
                 userJson.put(Constant.USER_MOBILE_KEY, user.getUserMobile());
                 userJson.put(Constant.USER_NAME_KEY, user.getUserName());
@@ -175,15 +182,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
         @Override
         protected void onPostExecute(HTTPResponse result) {
-           startIntent(result);
+            finish();
+            startIntent(result);
         }
 
         @Override
         protected void onPreExecute() {
+            pDialog = new ProgressDialog(RegisterActivity.this);
+            pDialog.setTitle("User Registration");
+            pDialog.setMessage("Registering user ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         @Override
         protected void onProgressUpdate(Void... values) {
+            pDialog.setMessage("Loading User Space");
+            pDialog.setTitle("Getting Data");
         }
 
     }
