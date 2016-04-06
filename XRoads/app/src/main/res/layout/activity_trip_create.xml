@@ -1,0 +1,236 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.li.xroads.activity.TripCreateActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/tripCreateActFirstRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tripCreateActNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="@string/registerAct_name"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/tripCreateActNameEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tripCreateActNameText"
+                android:layout_weight="9"
+                android:background="@drawable/gradient_bg1"
+                android:gravity="left"
+                android:inputType="text"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tripCreateActSecondRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tripCreateActFirstRow"
+            android:layout_marginTop="5dp"
+            android:weightSum="10">
+
+
+            <EditText
+                android:id="@+id/tripCreateActStartDateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="9"
+                android:background="@drawable/gradient_bg"
+                android:gravity="left"
+                android:hint="@string/start_date"
+                android:inputType="date" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tripCreateActStartDateEdit"
+                android:layout_gravity="left"
+                android:layout_toRightOf="@+id/tripCreateActStartDateEdit"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/startDateButton"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="left" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="left"
+                    android:contentDescription="Start Date"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/calendar_icon1" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tripCreateActThirdRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tripCreateActSecondRow"
+            android:layout_marginTop="5dp"
+            android:weightSum="10">
+
+
+            <EditText
+                android:id="@+id/tripCreateActEndDateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="9"
+                android:background="@drawable/gradient_bg"
+                android:gravity="left"
+                android:hint="@string/end_date"
+                android:inputType="date" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/endDateButton"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="left" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="left"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/calendar_icon1" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tripCreateActForthRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tripCreateActThirdRow"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+           <!-- <LinearLayout
+                android:id="@+id/startPointTextLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tripCreateActStartPointText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_point"
+                    android:textSize="20sp" />
+            </LinearLayout>-->
+
+            <!--<LinearLayout
+                android:id="@+id/startPointLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">-->
+
+                <fragment
+                    android:id="@+id/tripCreateActStartPointFragment"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_bg1" />
+
+            </FrameLayout>
+
+            <!--</LinearLayout>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tripCreateActFifthRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tripCreateActForthRow"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gradient_bg"
+            >
+
+          <!--  <LinearLayout
+                android:id="@+id/endPointTextLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tripCreateActEndPointText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/end_point"
+                    android:textSize="20sp" />
+            </LinearLayout>-->
+
+        <!--    <LinearLayout
+                android:id="@+id/endPointLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">-->
+
+                <fragment
+                    android:id="@+id/tripCreateActEndPointFragment"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_bg1" />
+            <!--</LinearLayout>-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/tripCreateActSixthRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tripCreateActFifthRow"
+            android:layout_marginTop="30dp"
+            android:weightSum="10">
+
+            <Button
+                android:id="@+id/tripCreateSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="@drawable/gradient_button"
+                android:text="@string/save"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

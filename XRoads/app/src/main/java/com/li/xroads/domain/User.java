@@ -1,17 +1,34 @@
 package com.li.xroads.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by nagnath_p on 3/4/2016.
  */
 public class User {
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("email")
     private String email;
+    @SerializedName("userMobile")
     private String userMobile;
+    @SerializedName("userName")
     private String userName;
+    @SerializedName("password")
     private String password;
+    @SerializedName("isRegistered")
     private String isRegistered;
 
     public User(){
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

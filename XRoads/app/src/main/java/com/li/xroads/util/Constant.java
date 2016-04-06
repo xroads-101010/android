@@ -18,5 +18,16 @@ public interface Constant {
     String USER_NAME_KEY = "userName";
     String PASSWORD_KEY = "password";
     String IS_REGISTERED_KEY = "isRegistered";
+    String TRIPS_KEY = "trips";
+    String ID_KEY = "id";
 
+    interface Trip {
+        int CREATE_TRIP_REQUEST = 1;
+        int UPDATE_TRIP_REQUEST = 1;
+        String NAME = "name";
+        String TRIP_PARCEL_URI = "com.trip";
+    }
+
+    String ACTION_CREATE = "CREATE";
+    String ACTION_UPDATE = "UPDATE";
 }

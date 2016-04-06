@@ -2,14 +2,18 @@ package com.li.xroads.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ import android.widget.Toast;
 
 import com.li.xroads.R;
 import com.li.xroads.domain.User;
+import com.li.xroads.fragment.InternetCheckDialogFragment;
 import com.li.xroads.helper.HTTPResponse;
 import com.li.xroads.helper.RestClient;
 import com.li.xroads.listener.TextValidator;
@@ -30,7 +35,7 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 
 
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener,InternetCheckDialogFragment.InternetCheckDialogListener {
 
     Button registerButton;
     EditText emailEdit;
@@ -42,14 +47,17 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        hideSoftKeyboard();
         if (!NetworkConnectionUtility.isInternetConnected(this)) {
-            Toast.makeText(this, "Internet is not connected, please check connection", Toast.LENGTH_LONG).show();
+            DialogFragment dialog = new InternetCheckDialogFragment();
+            dialog.show(getFragmentManager(), "InternetCheckFragment");
             return;
         }
+
         loginScreenLink = (TextView) findViewById(R.id.regiActLinkToLogin);
         loginScreenLink.setOnClickListener(this);
         registerView();
+
     }
 
     private void registerView() {
@@ -182,7 +190,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
         @Override
         protected void onPostExecute(HTTPResponse result) {
-            finish();
+            pDialog.dismiss();
             startIntent(result);
         }
 
@@ -198,10 +206,21 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            pDialog.setMessage("Loading User Space");
-            pDialog.setTitle("Getting Data");
+
         }
 
+    }
+    @Override
+    public void onDialogOkClick(DialogFragment dialog) {
+        return;
+    }
+
+
+
+    public void hideSoftKeyboard() {
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
     }
 
 }

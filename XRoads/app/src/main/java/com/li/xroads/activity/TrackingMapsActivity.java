@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TrackingMapsActivity extends Activity implements LocationFragment.OnFragmentInteractionListener, OnMapReadyCallback {
+public class TrackingMapsActivity extends AppCompatActivity implements LocationFragment.OnFragmentInteractionListener, OnMapReadyCallback {
     private static int REQUEST_CODE_RECOVER_PLAY_SERVICES = 200;
 
 

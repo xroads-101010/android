@@ -2,24 +2,41 @@ package com.li.xroads.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.li.xroads.R;
+import com.li.xroads.fragment.InternetCheckDialogFragment;
+import com.li.xroads.util.Constant;
+import com.li.xroads.util.NetworkConnectionUtility;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener ,InternetCheckDialogFragment.InternetCheckDialogListener{
 
     Button loginButton;
     TextView registerScreenLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_login);
+        hideSoftKeyboard();
+        if (!NetworkConnectionUtility.isInternetConnected(this)) {
+            DialogFragment dialog = new InternetCheckDialogFragment();
+            dialog.show(getFragmentManager(), "InternetCheckFragment");
+            return;
+        }
 
         loginButton = (Button) findViewById(R.id.loginActLoginButton);
         loginButton.setOnClickListener(this);
@@ -51,7 +68,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.loginActLoginButton:
-                intent = new Intent(this, TrackingMapsActivity.class);
+                intent = new Intent(this, TripActivity.class);
+                intent.putExtra(Constant.USER_ID, 3);
                 break;
             case R.id.loginActLinkToRegister:
                 intent = new Intent(this, RegisterActivity.class);
@@ -61,4 +79,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             startActivity(intent);
         }
     }
+
+
+    @Override
+    public void onDialogOkClick(DialogFragment dialog) {
+        return;
+    }
+
+    public void hideSoftKeyboard() {
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
+    }
+
+
+
 }

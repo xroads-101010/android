@@ -1,17 +1,19 @@
 package com.li.xroads.activity;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import com.li.xroads.R;
 
-public class OtpActivity extends Activity implements View.OnClickListener {
+public class OtpActivity extends AppCompatActivity implements View.OnClickListener {
 
     ActionBar actionBar;
     Button otpButton;
@@ -19,8 +21,9 @@ public class OtpActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_otp);
-        actionBar = getActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         otpButton = (Button) findViewById(R.id.otpActOtpButton);
         otpButton.setOnClickListener(this);

@@ -4,6 +4,9 @@ import android.os.Parcelable;
 
 import com.li.xroads.util.Constant;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 
@@ -51,5 +54,19 @@ public class HTTPResponse implements Serializable {
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    public JSONObject getResponseAsJson(){
+        JSONObject jsonResp = null;
+        if(status == HttpURLConnection.HTTP_OK) {
+            if (response != null) {
+                try {
+                    jsonResp = new JSONObject(response);
+                } catch (JSONException ex) {
+                    jsonResp = null;
+                }
+            }
+        }
+        return  jsonResp;
     }
 }
